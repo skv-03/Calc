@@ -45,7 +45,7 @@ function handleClick(event){
     const buttonId = event.target.id;
     const currentBox = document.getElementById("current");
     evaluateState(currentBox.value);
-    console.log(state);
+    // console.log(state);
     currentBox.style.fontSize="15px";
     if(buttonId>=0 && buttonId<=9){
         if(state.num) currentBox.value+=buttons[buttonId]; 
@@ -94,8 +94,9 @@ function evaluate(currentBox,pastBox){
         if(tokens[i]!='^'){
             newtokens.push(tokens[i]); i++; continue;
         }
-        x=parseFloat(newtokens[i-1]);
-        newtokens[i-1]=x*x;
+        j=newtokens.length-1;
+        x=parseFloat(newtokens[j]);
+        newtokens[j]=x*x;
         i+=2;
     }
     tokens=newtokens;
@@ -107,10 +108,11 @@ function evaluate(currentBox,pastBox){
         if(tokens[i]!='/' && tokens[i]!='*'){
             newtokens.push(tokens[i]); i++; continue;
         }
-        x=parseFloat(newtokens[i-1]);
+        j=newtokens.length-1;
+        x=parseFloat(newtokens[j]);
         y=parseFloat(tokens[i+1]);
-        if(tokens[i]=='*') newtokens[i-1]=x*y;
-        if(tokens[i]=='/') newtokens[i-1]=x/y;
+        if(tokens[i]=='*') newtokens[j]=x*y;
+        if(tokens[i]=='/') newtokens[j]=x/y;
         i+=2;
     }
     tokens=newtokens;
@@ -122,9 +124,10 @@ function evaluate(currentBox,pastBox){
         if(tokens[i]!='%'){
             newtokens.push(tokens[i]); i++; continue;
         }
-        x=parseFloat(newtokens[i-1]);
+        j=newtokens.length-1;
+        x=parseFloat(newtokens[j]);
         y=parseFloat(tokens[i+1]);
-        newtokens[i-1]=x%y;
+        newtokens[j]=x%y;
         i+=2;
     }
     tokens=newtokens;
@@ -136,10 +139,11 @@ function evaluate(currentBox,pastBox){
         if(tokens[i]!='+' && tokens[i]!='-'){
             newtokens.push(tokens[i]); i++; continue;
         }
-        x=parseFloat(newtokens[i-1]);
+        j=newtokens.length-1;
+        x=parseFloat(newtokens[j]);
         y=parseFloat(tokens[i+1]);
-        if(tokens[i]=='+') newtokens[i-1]=x+y;
-        if(tokens[i]=='-') newtokens[i-1]=x-y;
+        if(tokens[i]=='+') newtokens[j]=x+y;
+        if(tokens[i]=='-') newtokens[j]=x-y;
         i+=2;
     }
     tokens=newtokens;
