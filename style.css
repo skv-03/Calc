@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-color: rgb(209, 230, 249);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center; /* Center-align the heading */
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+.QA {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.text-item{
+    height: 30px;
+    width: 120px;
+    font-size: 15px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 62px);
+    grid-template-rows: repeat(5,40px);
+    background-color: rgb(141, 224, 196);
+    gap: 5px;
+}
+
+.grid-item {
+    background-color: rgb(187, 187, 233);
+    font-size: 20px;
+}
